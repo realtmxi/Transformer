@@ -1,0 +1,106 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{palatino, amsmath, amssymb, amsfonts, hyperref, amsthm, bbm, cancel}
+\usepackage[breakable]{tcolorbox}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered, ruled]{algorithm2e}
+\usepackage{xcolor, graphicx}
+\usepackage[shortlabels]{enumitem}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage[cal=pxtx]{mathalfa}
+\usepackage{fancyhdr} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\pink}[1]{{\color{Magenta} #1}}
+\newcommand{\gray}[1]{{\color{Gray} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\todo}[1]{{\color{red} TODO: #1}}
+\renewcommand{\comment}[1]{{\color{Blue} Comment:  #1}}
+\newcommand{\inabox}[1]{\begin{tcolorbox}[parbox=false, colback=White, breakable] #1 \end{tcolorbox}}
+\newcommand{\question}[3]{\inabox{ \textbf{Question #1 (#2 pts). } #3}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\p}{\mathbb{P}}
+\renewcommand{\subset}{\subseteq}
+
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{Murphy Tian}}
+% Right side of header. First page empty (as above).
+\rhead{\fancyplain{}{CSC311 HW2}}
+\setlist[enumerate,1]{a.)} % Level 1, 2 enumerate styles
+\setlist[enumerate,2]{i.)}
+\setlist[itemize,1]{$\cdot$} % Small dot
+
+\newcommand{\SOLUTION}{}
+\newcommand{\solution}[1]{
+    \ifdefined\SOLUTION
+        \newpage
+        \textbf{#1.} 
+    \else
+    \fi
+}
+
+\newcommand{\handout}[1]{
+    \ifdefined\SOLUTION
+        #1
+    \else
+    \fi
+}
+\newtheorem{theorem}{Theorem}
+
+
+\newcommand{\declarecommand}[1]{\providecommand{#1}{}\renewcommand{#1}}
+\declarecommand{\emptyset}{\varnothing} % better empty set
+\declarecommand{\epsilon}{\varepsilon} % better epsilon
+\declarecommand{\R}{\mathbb{R}} % reals
+\declarecommand{\Z}{\mathbb{Z}} % integers
+\declarecommand{\Q}{\mathbb{Q}} % rationals
+\declarecommand{\N}{\mathbb{N}} % naturals
+\declarecommand{\C}{\mathbb{C}} % complex
+\declarecommand{\J}{\mathcal{J}}
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert} %norm
+
+%% Linear algebra
+\declarecommand{\mat}[1]{\begin{bmatrix*}[r]#1\end{bmatrix*}}
+\declarecommand{\matc}[1]{\begin{bmatrix}#1\end{bmatrix}} % matrix
+\DeclareMathOperator{\Span}{span} % span
+\DeclareMathOperator{\Img}{img} % image
+\DeclareMathOperator{\Ker}{ker} % kernel
+\DeclareMathOperator{\Id}{id} % identity map
+\DeclareMathOperator{\Range}{range} % range
+\DeclareMathOperator{\Rref}{rref} % row reduced echelon form
+\DeclareMathOperator{\Rank}{rank} % rank
+\DeclareMathOperator{\Null}{null} % null space
+\DeclareMathOperator{\Nullity}{nullity} % nullity
+\DeclareMathOperator{\Proj}{proj} % projection
+\DeclareMathOperator{\Dim}{dim} % dimension
+
+%% Topology
+\DeclareMathOperator{\Int}{int}
+\DeclareMathOperator{\Cl}{cl}
+
+%% Calculus
+\DeclareMathOperator{\Length}{length} % length
+\DeclareMathOperator{\Area}{area} % area
+\DeclareMathOperator{\Vol}{vol} % volume
+\DeclareMathOperator{\Grad}{grad} % gradient
+\DeclareMathOperator{\Curl}{curl} % curl
+\DeclareMathOperator{\Div}{div} % divergence
+
+\title{CSC 311 Final Project}
+\author{Murphy Tian, Blair Yang, Tony Chen} % TODO PUT NAMES HERE
+\date{Due: March 28th , 2022 at 5:00pm} % TODO PUT DATE HERE
+
+\begin{document}
+
+\maketitle
+\newpage
+
+\end{document}
