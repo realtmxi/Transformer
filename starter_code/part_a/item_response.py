@@ -1,4 +1,4 @@
-from starter_code.utils import *
+from utils import *
 
 import numpy as np
 import pandas as pd
@@ -22,10 +22,8 @@ def neg_log_likelihood(data, theta, beta):
     :return: float
     """
     #####################################################################
-    # TODO:                                                             #
-    # Implement the function as described in the docstring.             #
+    # TODO: Implement the function as described in the docstring.
     #####################################################################
-
 
     # Masking
     positive_mask = data == 1
