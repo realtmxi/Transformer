@@ -1,8 +1,7 @@
-from utils import *
+from starter_code.utils import *
 from torch.autograd import Variable
 
 import torch.nn as nn
-import torch.nn.functional as F
 import torch.optim as optim
 import torch.utils.data
 
@@ -31,6 +30,8 @@ def load_data(base_path="../data"):
     # Fill in the missing entries to 0.
     zero_train_matrix[np.isnan(train_matrix)] = 0
     # Change to Float Tensor for PyTorch.
+
+
     zero_train_matrix = torch.FloatTensor(zero_train_matrix)
     train_matrix = torch.FloatTensor(train_matrix)
 
@@ -70,7 +71,8 @@ class AutoEncoder(nn.Module):
         # Implement the function as described in the docstring.             #
         # Use sigmoid activations for f and g.                              #
         #####################################################################
-        out = inputs
+        intermediate = torch.sigmoid(self.g(inputs))
+        out = torch.sigmoid(self.h(intermediate))
         #####################################################################
         #                       END OF YOUR CODE                            #
         #####################################################################
@@ -90,7 +92,6 @@ def train(model, lr, lamb, train_data, zero_train_data, valid_data, num_epoch):
     :param num_epoch: int
     :return: None
     """
-    # TODO: Add a regularizer to the cost function. 
     
     # Tell PyTorch you are training the model.
     model.train()
@@ -113,7 +114,7 @@ def train(model, lr, lamb, train_data, zero_train_data, valid_data, num_epoch):
             nan_mask = np.isnan(train_data[user_id].unsqueeze(0).numpy())
             target[0][nan_mask] = output[0][nan_mask]
 
-            loss = torch.sum((output - target) ** 2.)
+            loss = torch.sum((output - target) ** 2.) + (model.get_weight_norm() * lamb / 2)
             loss.backward()
 
             train_loss += loss.item()
@@ -142,6 +143,8 @@ def evaluate(model, train_data, valid_data):
     total = 0
     correct = 0
 
+    # print(valid_data["user_id"])
+
     for i, u in enumerate(valid_data["user_id"]):
         inputs = Variable(train_data[u]).unsqueeze(0)
         output = model(inputs)
@@ -154,6 +157,8 @@ def evaluate(model, train_data, valid_data):
 
 
 def main():
+    torch.manual_seed(311)
+
     zero_train_matrix, train_matrix, valid_data, test_data = load_data()
 
     #####################################################################
@@ -162,13 +167,14 @@ def main():
     # validation set.                                                   #
     #####################################################################
     # Set model hyperparameters.
-    k = None
-    model = None
+    k = 10
+    no_question = zero_train_matrix.shape[1]
+    model = AutoEncoder(num_question=no_question, k=k)
 
     # Set optimization hyperparameters.
-    lr = None
-    num_epoch = None
-    lamb = None
+    lr = 0.1
+    num_epoch = 10
+    lamb = 0
 
     train(model, lr, lamb, train_matrix, zero_train_matrix,
           valid_data, num_epoch)

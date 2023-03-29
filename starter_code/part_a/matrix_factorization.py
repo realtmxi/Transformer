@@ -1,4 +1,4 @@
-from utils import *
+from starter_code.utils import *
 from scipy.linalg import sqrtm
 
 import numpy as np
@@ -77,6 +77,8 @@ def update_u_z(train_data, lr, u, z):
     i = \
         np.random.choice(len(train_data["question_id"]), 1)[0]
 
+
+
     c = train_data["is_correct"][i]
     n = train_data["user_id"][i]
     q = train_data["question_id"][i]
@@ -125,7 +127,6 @@ def main():
     # (SVD) Try out at least 5 different k and select the best k        #
     # using the validation set.                                         #
     #####################################################################
-    pass
     #####################################################################
     #                       END OF YOUR CODE                            #
     #####################################################################
