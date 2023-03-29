@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from sklearn.impute import KNNImputer
-from starter_code.utils import *
+from utils import *
 import numpy as np
 import os, sys
 
@@ -80,7 +80,7 @@ def main():
         print('----------------------------------------------------')
         print(f'KNN with {approach[i]}')
         print('----------------------------------------------------')
-        k_arr = np.linspace(1, 21, 5).astype(int)
+        k_arr = np.linspace(1, 26, 6).astype(int)
         acc_by_k = []
         for k in k_arr:
             acc = fn(matrix=sparse_matrix, valid_data=val_data, k=k)

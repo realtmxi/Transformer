@@ -1,0 +1,120 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{palatino, amsmath, amssymb, amsfonts, hyperref, amsthm, bbm, cancel}
+\usepackage[breakable]{tcolorbox}
+\usepackage[linesnumbered,lined,boxed,commentsnumbered, ruled]{algorithm2e}
+\usepackage{xcolor, graphicx}
+\usepackage{xifthen}
+\usepackage[shortlabels]{enumitem}
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage[cal=pxtx]{mathalfa}
+\usepackage{fancyhdr} 
+\usepackage{url}
+\setlength\parindent{0pt}
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+\newcommand{\pink}[1]{{\color{Magenta} #1}}
+\newcommand{\gray}[1]{{\color{Gray} #1}}
+\newcommand{\red}[1]{{\color{red} #1}}
+\newcommand{\todo}[1]{{\color{red} TODO: #1}}
+\renewcommand{\comment}[1]{{\color{Blue} Comment:  #1}}
+\newcommand{\inabox}[1]{\begin{tcolorbox}[parbox=false, colback=White, breakable] #1 \end{tcolorbox}}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\p}{\mathbb{P}}
+\renewcommand{\subset}{\subseteq}
+
+\pagestyle{fancyplain}
+\lhead{\fancyplain{}{Blair Yang, Murphy Tian, Tony Chen}}
+% Right side of header. First page empty (as above).
+\rhead{\fancyplain{}{CSC311 Final Project Report}}
+\setlist[enumerate,1]{a.)} % Level 1, 2 enumerate styles
+\setlist[enumerate,2]{i.)}
+%\setlist[itemize,1]{$\cdot$} % Small dot
+
+\newcommand{\SOLUTION}{}
+\newcommand{\solution}[1]{
+    \ifdefined\SOLUTION
+        \newpage
+        \textbf{#1.} 
+    \else
+    \fi
+}
+
+\newcommand{\handout}[1]{
+    \ifdefined\SOLUTION
+        #1
+    \else
+    \fi
+}
+\newtheorem{theorem}{Theorem}
+
+
+% Counter for Questions
+\newcounter{question}
+
+% Question
+\newcommand{\question}[2]{%
+	\stepcounter{question}
+	\vspace{.25in} \textbf{Q\arabic{question} 
+		\ifthenelse{\isempty{#1}}%
+		{}% if no points
+		{[#1 Points]\ }% if #1 is not empty
+		#2}\vspace{0.10in}
+}
+
+% Subquestion
+\newcommand{\qpart}[2]{%
+	\vspace{.10in} \textbf{(#1)}
+	\ifthenelse{\isempty{#2}}%
+	{}% if no points
+	{[#2 Points]}% if #1 is not empty
+}
+
+\newcommand{\references}{\vspace{.25in}\textbf{References}\vspace{.10in}}
+
+% Solution to question
+\newcommand{\sol}{\vspace{.25in}\textbf{Solution}\vspace{.10in}}
+
+% Solution to subquestion
+\newcommand{\solpart}[1] {\vspace{.10in}\textbf{(#1)}}
+
+% Should the solutions be displayed?
+\newif\ifsolutions
+\solutionstrue
+
+% Should the marking scheme be displayed?
+\newif\ifmarkingscheme
+\markingschemefalse
+
+% Math commands
+\newcommand{\set}[1]{\{#1\}}
+\newcommand{\floor}[1]{\lfloor#1\rfloor}
+\newcommand{\ceil}[1]{\lceil#1\rceil}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator*{\argmax}{arg\,max}
+
+\usepackage[linesnumbered,lined,boxed,commentsnumbered, ruled]{algorithm2e}
+\usepackage{algorithm2e}
+
+\title{CSC 311 Final Project Report}
+\author{Blair Yang, Murphy Tian, Tony Chen} % TODO PUT NAMES HERE
+\date{Due: Mar 30, 2023 at 5:00pm} % TODO PUT DATE HERE
+\begin{document}
+\maketitle
+\newpage
+\section*{Part A}
+\input{q1}
+\input{q2}
+
+\end{document}
