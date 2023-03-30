@@ -2,6 +2,7 @@ from utils import *
 
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 
 
 def sigmoid(x):
@@ -129,16 +130,18 @@ def irt(data, val_data, lr, iterations):
     beta = np.random.random(size=(n, ))
 
     val_acc_lst = []
+    train_neg_lld_lst = []
 
     for i in range(iterations):
         neg_lld = neg_log_likelihood(data, theta=theta, beta=beta)
         score = evaluate(data=val_data, theta=theta, beta=beta)
         val_acc_lst.append(score)
+        train_neg_lld_lst.append(neg_lld)
         print("NLLK: {} \t Score: {}".format(neg_lld, score))
         theta, beta = update_theta_beta(data, lr, theta, beta)
 
     # TODO: You may change the return values to achieve what you want.
-    return theta, beta, val_acc_lst
+    return theta, beta, val_acc_lst, train_neg_lld_lst
 
 
 def evaluate(data, theta, beta):
@@ -158,6 +161,22 @@ def evaluate(data, theta, beta):
         pred.append(p_a >= 0.5)
     return np.sum((data["is_correct"] == np.array(pred))) \
            / len(data["is_correct"])
+
+
+def visualize(lst1, lst2):
+    """
+    visualize list1, list2 in one plot.
+    """
+    plt.figure(figsize=(15, 6))
+    plt.subplot(1, 2, 1)
+    plt.title(f'Training Loss vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
+    plt.plot(lst1)
+
+    plt.subplot(1, 2, 2)
+    plt.title(f'Validation Accuracy vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
+    plt.plot(lst2)
+    plt.savefig('../out/irt.jpg', dpi=300)
+    plt.show()
 
 
 def main():
@@ -181,9 +200,17 @@ def main():
     #                       END OF YOUR CODE                            #
     #####################################################################
     # print(train_data)
-    irt(data=train_data_matrix, val_data=val_data, lr=0.01, iterations=22)
+    theta, beta, val_acc_lst, train_neg_lld_lst = irt(data=train_data_matrix,
+                                                      val_data=val_data,
+                                                      lr=0.01,
+                                                      iterations=20)
+    # visualize(train_neg_lld_lst, val_acc_lst)
+
+    print(f'final value accuracy = {val_acc_lst[-1]}')
+
+
     #####################################################################
-    # TODO:                                                             #
+    # TODO:
     # Implement part (d)                                                #
     #####################################################################
     pass
