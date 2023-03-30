@@ -30,6 +30,13 @@ Then, taking the derivative of the logistic model with respect to $\theta_i, \be
 	\begin{enumerate}
 	\item [c.)] With the implemented code, report the final validation and test accuracies.
 	\inabox{the final validation := 0.709991532599492\\
-	final test accuracy := }
+	final test accuracy := 0.7061812023708721\\
+	And detailed implementation in item\_response.py file}
 	\item [d.)]Select three questions $j_1, j_2$, and $j_3$. Using the trained $\theta$ and $\beta$, plot three curves on the same plot that shows the probability of the correct response $p(c_{ij} = 1)$ as a function of $\theta$ given a question j. Comment on the shape of the curves  and briefly describe what these curves represent.
+	\inabox{Taking questions $j_1 = 1, j_2 = 100, j_3 = 1000$.\\
+	 We find that the shape of the curve is similar with a sigmoid function.\\
+	 The curve on the plot shows the probability of the correct response as a function of $\theta$ given a question j.}
+	\begin{center}
+		\includegraphics[scale=1]{../out/irt_d.jpg}
+	\end{center}
 \end{enumerate}

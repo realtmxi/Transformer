@@ -164,9 +164,7 @@ def evaluate(data, theta, beta):
 
 
 def visualize(lst1, lst2):
-    """
-    visualize list1, list2 in one plot.
-    """
+
     plt.figure(figsize=(15, 6))
     plt.subplot(1, 2, 1)
     plt.title(f'Training Loss vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
@@ -175,7 +173,7 @@ def visualize(lst1, lst2):
     plt.subplot(1, 2, 2)
     plt.title(f'Validation Accuracy vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
     plt.plot(lst2)
-    plt.savefig('../out/irt.jpg', dpi=300)
+    plt.savefig('../out/irt.jpg', dpi=400)
     plt.show()
 
 
@@ -199,7 +197,6 @@ def main():
     #####################################################################
     #                       END OF YOUR CODE                            #
     #####################################################################
-    # print(train_data)
     theta, beta, val_acc_lst, train_neg_lld_lst = irt(data=train_data_matrix,
                                                       val_data=val_data,
                                                       lr=0.01,
@@ -207,13 +204,34 @@ def main():
     # visualize(train_neg_lld_lst, val_acc_lst)
 
     print(f'final value accuracy = {val_acc_lst[-1]}')
-
-
+    test_accuracy = evaluate(data=test_data, theta=theta, beta=beta)
+    print(f"final test accuracy: {test_accuracy}")
     #####################################################################
     # TODO:
     # Implement part (d)                                                #
     #####################################################################
-    pass
+    # Step 1: Select three questions
+    j1, j2, j3 = 1, 100, 1000  # You can choose any other indices
+
+    # Step 2: Generate a range of theta values
+    theta_range = np.linspace(-4, 4, 100)
+
+    # Step 3: Compute the probabilities for each question and theta value
+    p_j1 = sigmoid(theta_range - beta[j1])
+    p_j2 = sigmoid(theta_range - beta[j2])
+    p_j3 = sigmoid(theta_range - beta[j3])
+
+    # Step 4: Plot the three curves on the same plot
+    plt.plot(theta_range, p_j1, label=f"Question {j1}")
+    plt.plot(theta_range, p_j2, label=f"Question {j2}")
+    plt.plot(theta_range, p_j3, label=f"Question {j3}")
+
+    plt.xlabel("Theta (Ability)")
+    plt.ylabel("P(c_ij = 1)")
+    plt.legend()
+    plt.title("Probability of Correct Response as a Function of Theta")
+    plt.savefig('../out/irt_d.jpg', dpi=400)
+    plt.show()
     #####################################################################
     #                       END OF YOUR CODE                            #
     #####################################################################
