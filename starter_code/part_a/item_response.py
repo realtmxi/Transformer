@@ -1,4 +1,4 @@
-from utils import *
+from starter_code.utils import *
 
 import numpy as np
 import pandas as pd

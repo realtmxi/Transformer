@@ -100,6 +100,8 @@ def train(model, lr, lamb, train_data, zero_train_data, valid_data, num_epoch):
     optimizer = optim.SGD(model.parameters(), lr=lr)
     num_student = train_data.shape[0]
 
+    valid_lst = []
+
     for epoch in range(0, num_epoch):
         train_loss = 0.
 
@@ -120,9 +122,12 @@ def train(model, lr, lamb, train_data, zero_train_data, valid_data, num_epoch):
             train_loss += loss.item()
             optimizer.step()
 
+
         valid_acc = evaluate(model, zero_train_data, valid_data)
+        valid_lst.append(valid_acc)
         print("Epoch: {} \tTraining Cost: {:.6f}\t "
               "Valid Acc: {}".format(epoch, train_loss, valid_acc))
+    return valid_acc
     #####################################################################
     #                       END OF YOUR CODE                            #
     #####################################################################
