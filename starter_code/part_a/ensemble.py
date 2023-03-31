@@ -1,4 +1,3 @@
-import numpy as np
 from matplotlib import pyplot as plt
 
 from neural_network import AutoEncoder, train, load_data
@@ -12,7 +11,7 @@ from torch.autograd import Variable
 
 EPOCH = 10
 LEARNING_RATE_IRT = 0.01
-LEARNING_RATE = 0.1
+LEARNING_RATE_NN = 0.1
 LAMBDA = 0
 NUM_MODELS = 3
 EMBED_DIMENSION = 256
@@ -94,7 +93,6 @@ def generate_masked(train_data):
     mask3 = torch.ones((m, n))
     mask3.view(-1)[indices[2 * part_size:]] = 0
 
-
     partition_1 = torch.masked_fill(train_data, mask=mask1.bool(), value=torch.tensor(float('nan')))
     partition_2 = torch.masked_fill(train_data, mask=mask2.bool(), value=torch.tensor(float('nan')))
     partition_3 = torch.masked_fill(train_data, mask=mask3.bool(), value=torch.tensor(float('nan')))
@@ -110,9 +108,12 @@ def get_models(train_data, zero_mat, val_data):
     models['irt'] = irt
     models['neurl'] = AutoEncoder(num_question, k=EMBED_DIMENSION)
 
-    theta, beta, _ = models['irt'](data=train_data['irt'], val_data=val_data, lr=LEARNING_RATE_IRT, iterations=EPOCH)
+    theta, beta, _ = models['irt'](data=train_data['irt'],
+                                   val_data=val_data,
+                                   lr=LEARNING_RATE_IRT,
+                                   iterations=EPOCH)
 
-    train(models['neurl'], lr=LEARNING_RATE, lamb=LAMBDA,
+    train(models['neurl'], lr=LEARNING_RATE_NN, lamb=LAMBDA,
           train_data=train_data['neurl'],
           zero_train_data=zero_mat,
           valid_data=val_data,
@@ -122,8 +123,6 @@ def get_models(train_data, zero_mat, val_data):
 
 
 def visualize(mask1, mask2):
-
-
     masks = [mask1, mask2]
 
     rslt = mask1 + mask2
@@ -134,7 +133,6 @@ def visualize(mask1, mask2):
         plt.subplot(1, 2, i + 1)
         plt.imshow(masks[i])
     plt.show()
-
 
     plt.imshow(rslt)
     plt.show()
@@ -149,11 +147,9 @@ def pred(models, irt_param, train_data, valid_data):
     nbrs = KNNImputer(n_neighbors=11)
     knn_rslt = nbrs.fit_transform(train_data)
 
-
     # Get irt pred_mat
     m = theta.shape[0]
     n = beta.shape[0]
-
 
     theta = np.expand_dims(theta, axis=1)
     beta = np.expand_dims(beta, axis=1)
@@ -209,11 +205,7 @@ def main():
 
     zero_train_matrix = torch.tensor(fold3.copy())
 
-    b = fold3
-
     zero_train_matrix[np.isnan(fold3)] = 0
-
-    # c = zero_train_matrix.numpy()
 
     models, (theta, beta) = get_models(all_train_data, zero_train_matrix, valid_data)
     knn_rslt, irt_rslt, val_acc = pred(models, (theta, beta), torch.tensor(dict2matrix(train_data).astype(np.float32)), valid_data)

@@ -192,10 +192,6 @@ def main():
     # Tune learning rate and number of iterations. With the implemented #
     # code, report the validation and test accuracy.                    #
     #####################################################################
-    pass
-    #####################################################################
-    #                       END OF YOUR CODE                            #
-    #####################################################################
     theta, beta, val_acc_lst, train_neg_lld_lst = irt(data=train_data_matrix,
                                                       val_data=val_data,
                                                       lr=0.01,
@@ -205,6 +201,10 @@ def main():
     print(f'final value accuracy = {val_acc_lst[-1]}')
     test_accuracy = evaluate(data=test_data, theta=theta, beta=beta)
     print(f"final test accuracy: {test_accuracy}")
+    #####################################################################
+    #                       END OF YOUR CODE                            #
+    #####################################################################
+
     #####################################################################
     # TODO:
     # Implement part (d)                                                #

@@ -6,6 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="e02b9bf7-f826-4f4e-8bc4-3537ec90aa88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter_code/Transformer_Deep_Attention.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/Transformer_Deep_Attention.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter_code/out/irt.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/irt.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter_code/part_a/ensemble.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/part_a/ensemble.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter_code/part_a/item_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/part_a/item_response.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/starter_code/part_a/knn.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/part_a/knn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +57,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Python.item_response">
+  <component name="RunManager" selected="Python.ensemble">
     <configuration name="ensemble" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC311_project" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -143,9 +148,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.ensemble" />
         <item itemvalue="Python.item_response" />
         <item itemvalue="Python.knn" />
-        <item itemvalue="Python.ensemble" />
         <item itemvalue="Python.neural_network" />
       </list>
     </recent_temporary>
@@ -166,7 +171,7 @@
       <workItem from="1679944217111" duration="126000" />
       <workItem from="1679944351244" duration="6949000" />
       <workItem from="1680210124857" duration="7676000" />
-      <workItem from="1680220114302" duration="8426000" />
+      <workItem from="1680220114302" duration="10454000" />
     </task>
     <servers />
   </component>
@@ -175,8 +180,8 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC311_project$neural_network.coverage" NAME="neural_network Coverage Results" MODIFIED="1679942906036" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
-    <SUITE FILE_PATH="coverage/CSC311_project$ensemble.coverage" NAME="ensemble Coverage Results" MODIFIED="1679945901107" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
+    <SUITE FILE_PATH="coverage/CSC311_project$ensemble.coverage" NAME="ensemble Coverage Results" MODIFIED="1680296039871" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
     <SUITE FILE_PATH="coverage/CSC311_project$knn.coverage" NAME="knn Coverage Results" MODIFIED="1680278720236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
-    <SUITE FILE_PATH="coverage/CSC311_project$item_response.coverage" NAME="item_response Coverage Results" MODIFIED="1680284408919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
+    <SUITE FILE_PATH="coverage/CSC311_project$item_response.coverage" NAME="item_response Coverage Results" MODIFIED="1680295770354" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/starter_code/part_a" />
   </component>
 </project>
