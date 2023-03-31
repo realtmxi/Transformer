@@ -6,14 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e02b9bf7-f826-4f4e-8bc4-3537ec90aa88" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/Plot.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/Plot.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/out/KNN_compare.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/KNN_compare.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/out/KNN_item.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/KNN_item.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/out/KNN_user.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/KNN_user.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/out/irt.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/irt.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/out/irt_d.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/out/irt_d.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/part_a/item_response.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/part_a/item_response.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/starter_code/part_a/knn.py" beforeDir="false" afterPath="$PROJECT_DIR$/starter_code/part_a/knn.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -174,7 +166,7 @@
       <workItem from="1679944217111" duration="126000" />
       <workItem from="1679944351244" duration="6949000" />
       <workItem from="1680210124857" duration="7676000" />
-      <workItem from="1680220114302" duration="7610000" />
+      <workItem from="1680220114302" duration="8426000" />
     </task>
     <servers />
   </component>
