@@ -148,8 +148,6 @@ def evaluate(model, train_data, valid_data):
     total = 0
     correct = 0
 
-    # print(valid_data["user_id"])
-
     for i, u in enumerate(valid_data["user_id"]):
         inputs = Variable(train_data[u]).unsqueeze(0)
         output = model(inputs)
