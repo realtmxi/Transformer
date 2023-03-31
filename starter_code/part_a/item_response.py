@@ -117,12 +117,6 @@ def irt(data, val_data, lr, iterations):
     """
     # TODO: Initialize theta and beta.
 
-    # df = pd.DataFrame(data)
-    # df = df.pivot(index='user_id', columns='question_id')
-    # data = df.to_numpy()
-
-    # print(data.shape)
-
     m = data.shape[0]
     n = data.shape[1]
 
@@ -163,17 +157,22 @@ def evaluate(data, theta, beta):
            / len(data["is_correct"])
 
 
-def visualize(lst1, lst2):
-
-    plt.figure(figsize=(15, 6))
+def visualize(lst1, lst2, entry1, entry2, file_name):
+    plt.figure(figsize=(9, 4))
     plt.subplot(1, 2, 1)
-    plt.title(f'Training Loss vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
+    plt.xlabel('Epoch')
+    plt.ylabel(entry1)
+    plt.title(f'{entry1} vs. Epoch with IRT')
     plt.plot(lst1)
+    plt.scatter(range(len(lst1)), lst1)
 
     plt.subplot(1, 2, 2)
-    plt.title(f'Validation Accuracy vs. Epoch with k={10}, epochs={len(lst1)}, lr=0.01, lamb=0')
+    plt.title(f'{entry2} vs. Epoch with IRT')
     plt.plot(lst2)
-    plt.savefig('../out/irt.jpg', dpi=400)
+    plt.scatter(range(len(lst2)), lst2)
+    plt.ylabel(entry2)
+    plt.xlabel('Epoch')
+    plt.savefig(f'../out/{file_name}.jpg', dpi=400)
     plt.show()
 
 
@@ -201,7 +200,7 @@ def main():
                                                       val_data=val_data,
                                                       lr=0.01,
                                                       iterations=20)
-    # visualize(train_neg_lld_lst, val_acc_lst)
+    visualize(train_neg_lld_lst, val_acc_lst, 'Neg-likelihood', 'Validation acc', 'IRT')
 
     print(f'final value accuracy = {val_acc_lst[-1]}')
     test_accuracy = evaluate(data=test_data, theta=theta, beta=beta)
@@ -222,6 +221,7 @@ def main():
     p_j3 = sigmoid(theta_range - beta[j3])
 
     # Step 4: Plot the three curves on the same plot
+    plt.figure(figsize=(7, 4))
     plt.plot(theta_range, p_j1, label=f"Question {j1}")
     plt.plot(theta_range, p_j2, label=f"Question {j2}")
     plt.plot(theta_range, p_j3, label=f"Question {j3}")

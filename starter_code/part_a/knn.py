@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 from sklearn.impute import KNNImputer
-from utils import *
+from starter_code.utils import *
 import numpy as np
 import os, sys
 
@@ -92,10 +92,13 @@ def main():
 
         print(f'Test acc with maximum val acc with k* = {k_arr[ibest]} is {final_test_acc}')
 
-        plt.figure(figsize=(8, 5))
+        plt.figure(figsize=(7, 4))
         plt.plot(k_arr, acc_by_k)
+        plt.scatter(k_arr, acc_by_k)
+        plt.xlabel('k value')
+        plt.ylabel('Validation accuracy')
         plt.title(f'KNN accuracy on validation set with similarity by {approach[i]}')
-        plt.savefig(f'../out/KNN_{approach[i]}.jpg', dpi=450)
+        plt.savefig(f'../out/KNN_{approach[i]}.jpg', dpi=400)
 
         acc_by_approach[approach[i]] = acc_by_k
 
@@ -104,18 +107,20 @@ def main():
         max_test_acc.append(final_test_acc)
         ibests.append(ibest)
 
-    plt.figure(figsize=(12, 6))
+    plt.figure(figsize=(9, 4))
     plt.subplot(1, 2, 1)
     for i in range(len(approach)):
         plt.plot(k_arr, acc_by_approach[approach[i]], label=approach[i])
-        plt.title(f'Comparision of accuracy on validation set')
+        plt.scatter(k_arr, acc_by_approach[approach[i]])
+        plt.legend()
+        plt.title(f'Accuracy on validation set')
 
     plt.subplot(1, 2, 2)
     plt.bar(approach, max_test_acc)
-    plt.title(f'Comparision of best accuracy on test set with k*={k_arr[ibests]}')
+    plt.title(f'Best acc on test set with k*={k_arr[ibests]}')
     plt.ylim((0.65, 0.7))
 
-    plt.savefig(f'../out/KNN_compare.jpg', dpi=450)
+    plt.savefig(f'../out/KNN_compare.jpg', dpi=400)
     plt.show()
 
     #####################################################################
